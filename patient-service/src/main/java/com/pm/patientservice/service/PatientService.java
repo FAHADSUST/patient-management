@@ -6,9 +6,7 @@ import com.pm.patientservice.model.Patient;
 import com.pm.patientservice.repository.PatientRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class PatientService {
@@ -18,7 +16,7 @@ public class PatientService {
         this.patientRepository = patientRepository;
     }
 
-    public List<PatientResponseDTO> getAllPatients() {
+    public List<PatientResponseDTO> getPatients() {
         List<Patient> patients = patientRepository.findAll();
 
         List<PatientResponseDTO> patientResponseDTOs = patients.stream().map(PatientMapper::toDTO).toList();

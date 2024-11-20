@@ -3,7 +3,6 @@ package com.pm.patientservice.controller;
 import com.pm.patientservice.dto.PatientResponseDTO;
 import com.pm.patientservice.service.PatientService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +20,7 @@ public class PatientController {
 
     @GetMapping
     public ResponseEntity<List<PatientResponseDTO>> getPatients() {
-        List<PatientResponseDTO> patients = patientService.getAllPatients();
+        List<PatientResponseDTO> patients = patientService.getPatients();
         return ResponseEntity.ok().body(patients);
     }
 }
