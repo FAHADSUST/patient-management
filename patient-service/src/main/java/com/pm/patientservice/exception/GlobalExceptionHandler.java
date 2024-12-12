@@ -13,7 +13,7 @@ import java.util.Map;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    //private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
@@ -28,6 +28,9 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(EmailAlreadyExistException.class)
     public ResponseEntity<String> handleEmailAlreadyExistException(EmailAlreadyExistException exception) {
+
+        log.warn("Email address already exist in the system {}", exception.getMessage());
+
         Map<String, String> errors = new HashMap<>();
         errors.put("message", "Email address already exist in the system");
 
