@@ -1,0 +1,27 @@
+server:
+  port: 4004
+
+  spring:
+    cloud:
+      gateway:
+        routes:
+          ### Rest client -> http://localhost:4004/api/patients  (after calling this, rest will redirect it to patient service using this rule where predicate (pattenr identfier of the api) define which rules then filters find out which part fo the code will go to the patient service)
+          ### API GATEWAT -> http://patient-service:4000/api/patients
+          ### Patient service (srping boot app) -> /patients --(return)-> patients array
+          - id: patient-service-route
+            uri: http://patient-service:4000
+            predicates:
+              - path=/api/patients/**
+            filters:
+              - strip-prefix=1
+
+          - id: api-docs-patient-route
+            uri: http://patient-service:400
+            predicates:
+              - path=/api-docs/patients
+            filters:
+              - rewrite-path=/api-docs/patients,/v3/api-docs
+              ### Rest-client -> http://localhost:4004/api-docs/patients
+              ### API-Gateway -> http://patient-service:4000/v3/api-docs
+
+
