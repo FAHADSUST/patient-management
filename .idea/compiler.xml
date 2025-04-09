@@ -9,12 +9,14 @@
         <module name="analytics-service" />
         <module name="billng-service" />
         <module name="patient-service" />
+        <module name="auth-service" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="analytics-service" options="-parameters" />
+      <module name="auth-service" options="-parameters" />
       <module name="billng-service" options="-parameters" />
       <module name="patient-service" options="-parameters" />
     </option>
