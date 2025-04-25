@@ -8,6 +8,12 @@ import java.util.Optional;
 
 @Service
 public class AuthService {
+
+    private final UserService userService;
+
+    public AuthService(UserService userService) {
+        this.userService = userService;
+    }
     public Optional<String> autheticate(LoginRequestDTO loginRequestDTO) {
         Optional<User> user = userService.findByEmail(loginRequestDTO.getEmail());
     }
