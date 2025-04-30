@@ -1,7 +1,6 @@
 package com.pm.authservice.service;
 
 import com.pm.authservice.dto.LoginRequestDTO;
-import com.pm.authservice.model.User;
 import com.pm.authservice.utils.JwtUtil;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,7 @@ public class AuthService {
     }
 
     // password request -> password -> encoded ->$fgffgfgf
-    public Optional<String> autheticate(LoginRequestDTO loginRequestDTO) {
+    public Optional<String> authenticate(LoginRequestDTO loginRequestDTO) {
         Optional<String> token = userService
                 .findByEmail(loginRequestDTO.getEmail())
                 .filter(user1 -> passwordEncoder.matches(loginRequestDTO.getPassword(), user1.getPassword()))
