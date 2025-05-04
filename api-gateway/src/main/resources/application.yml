@@ -5,6 +5,15 @@ spring:
   cloud:
     gateway:
       routes:
+        ### http://localhost:4004/auth/login
+        ### API gateway --> http://auth-service:4005/login
+        - id: auth-service-route
+          uri: http://auth-service:4005
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+
         ### Rest client -> http://localhost:4004/api/patients  (after calling this, rest will redirect it to patient service using this rule where predicate (pattenr identfier of the api) define which rules then filters find out which part fo the code will go to the patient service)
         ### API GATEWAT -> http://patient-service:4000/api/patients
         ### Patient service (srping boot app) -> /patients --(return)-> patients array
