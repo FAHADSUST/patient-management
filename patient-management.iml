@@ -28,5 +28,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-webflux:6.2.8" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webflux:6.2.7" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webflux:5.0.13.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: io.projectreactor:reactor-core:3.7.6" level="project" />
   </component>
 </module>
